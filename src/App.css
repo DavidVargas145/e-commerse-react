@@ -1,0 +1,60 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+header {
+  background-color: rgb(118, 57, 145);
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  align-items: center;
+  color: aliceblue;
+}
+
+Nav {
+  display: flex;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: .5rem;
+ 
+}
+
+nav ul li a {
+
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+
+body{
+  background-color: rgb(156, 83, 188);
+  
+}
+.item-list-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.productos-grilla {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.producto {
+  background-color: pink;
+  border-radius: .5rem;
+  padding: 1rem;
+  margin: 5%;
+}
+
+.producto img {
+ height: auto;
+ width: 100%;
+}
