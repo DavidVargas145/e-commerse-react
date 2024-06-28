@@ -1,60 +1,218 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 
+.App {
+  text-align: center;
 }
 
-header {
-  background-color: rgb(118, 57, 145);
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
   display: flex;
-  justify-content: space-between;
-  padding: 1rem;
+  flex-direction: column;
   align-items: center;
-  color: aliceblue;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
-Nav {
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*navbar*/
+
+    /* ------------------------------ */
+    .logo img{
+      display: flex;
+      width: 100px;
+      height: 100px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .navbar a {
+      position: relative;
+      font-size: 18px;
+      color: #222222;
+      font-weight: 500;
+      margin-left: 40px;
+      text-decoration: none;
+    }
+
+
+
+    .navbar a::before{
+
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #222222;
+      transition: .3s;
+    }
+
+
+    .navbar a:hover::before{
+      width: 100%;
+
+    }
+    /* ------------------------------ */
+
+
+/*CART*/
+.detalle {
   display: flex;
+  flex-direction: row;
+  border: 1px solid #dddddd;
+  width: 100%;
+}
+.encabezado {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  padding: 8px;
+  flex: 1;
+}
+.dato {
+  padding: 8px;
+  flex: 1;
 }
 
-nav ul {
-  list-style-type: none;
+/*CARTWIDGET*/
+
+.cart{
+  position: relative;
+}
+
+.dot{
+
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  
+
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  
+  background-color: #FF6666;
+  color: #fff;
+  
+  display: inline-block;
+  text-align: center;
+  font-size: small;
+}
+
+/*iTEM*/
+.item {
+  max-width: 200px;
   display: flex;
-  gap: .5rem;
- 
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-nav ul li a {
-
-  color: rgb(255, 255, 255);
-  text-decoration: none;
+.item img {
+  width: 100%;
 }
 
+/*iTEM COUNT*/
 
-body{
-  background-color: rgb(156, 83, 188);
+.btn{
+  width: auto;
+}
+
+.button-container {
+  display: flex;
+  
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.action-button {
+  background-color: #007bff; /* Color de fondo del botón */
+  color: #fff; /* Color del texto del botón */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Borde redondeado */
+  padding: 8px 12px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de la fuente */
+  margin: 0 5px; /* Margen entre botones */
+  cursor: pointer; /* Cursor al pasar por encima */
+  width: 80px;
+}
+
+.action-button:hover {
+  background-color: #0056b3; /* Color de fondo al pasar el cursor por encima */
+}
+
+/*ITEMDETAIL*/
+.custom-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
   
 }
-.item-list-container {
-  max-width: 1000px;
-  margin: 0 auto;
+
+.image-container {
+  margin-right: 20px; /* Ajusta el espacio entre la imagen y el contenido */
 }
 
-.productos-grilla {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
+.image-container img {
+  max-width: 300px;
+  
 }
 
-.producto {
-  background-color: pink;
-  border-radius: .5rem;
+img{
+  border-radius: 10px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+/* ------------------ */
+/* .info{
+  
+  
+  background-color: aquamarine;
+
+  border: 1px solid #343a40;
+  border-radius: 0.3rem;
   padding: 1rem;
-  margin: 5%;
+  margin: 0.5rem;
 }
+*/
 
-.producto img {
- height: auto;
- width: 100%;
+
+/*Itemlistcontainer*/
+.productsFlex{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 30px;
+  /* background-color: aqua; */
+  justify-content: space-between;
 }

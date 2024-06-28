@@ -1,23 +1,80 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import data from "../data/productos.json";
 import { ItemDetail } from './ItemDetail';
-
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase/firebaseConfig';
 
 
 export const ItemDetailContainer = () => {
 
-let {itemId} = useParams();
-let [producto, setProducto]=useState();
+  const { id } = useParams();
 
-useEffect(()=>{
-setProducto(data.find((prod)=>prod.id === parseInt(itemId)));
-},[itemId])
+  const [item, setItem] = useState(null);
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null);
+
+  
+  const getProductDB = (id) => {
+
+    
+    const oneProduct = doc(db, "products", id);
+
+    
+    getDoc(oneProduct)
+      .then(response => {
+        if (response.exists()) {
+          
+          const product = {
+            id: response.id,
+            ...response.data()
+          };
+          setItem(product);
+        } else {
+          
+          const errorMessage = "No se encontró el producto";
+          setError(errorMessage); 
+        }
+      })
+      .catch(error => {
+        console.error('Error al obtener el producto:', error);
+        
+        setError("Error al obtener el producto");
+      })
+     
+      .finally(() => {
+        setLoading(false);
+      });
+   
 
 
+
+  }
+
+
+  useEffect(() => {
+    setLoading(true)
+    getProductDB(id);
+
+  }, [])
 
   return (
-    <div >{producto? <ItemDetail producto={producto}  />: "Cargando..."}
-    </div>
+    <>
+
+      {
+        loading ?
+          <div>
+            <h2>Cargando detalles del producto...</h2>
+            <div className="spinner-border" role="status"></div>
+          </div>
+          :
+          <>
+            {error && <h2>No se encontró el producto</h2>}
+            {item && <ItemDetail {...item} />}
+          </>
+      }
+
+    </>
+
+
   )
 }

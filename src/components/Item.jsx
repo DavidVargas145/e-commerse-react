@@ -1,14 +1,21 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
+import '../App.css'
 
-export const Item = ({ producto }) => {
+export const Item = ({ id, name, img, description, price }) => {
     return (
-        <div className='producto'>
-            <img src={producto.imagen} />
-            <h2>{producto.nombre}</h2>
-            <p>${producto.precio}</p>
-            <p>{producto.descripcion}</p>
-            <Link to={`/item/${producto.id}`}>ver mas</Link>
-        </div>
+        <>
+            <div className="item">
+
+                <img src={img} alt={name} />
+                <h5> {name} </h5>
+                <div>
+                    <p>Precio: ${price}</p>
+
+                    <Link to={`/item/${id}`} >
+                        <button className="btn btn-dark " style={{ width: '100%' }}>Detalles</button>
+                    </Link>
+                </div>
+            </div>
+        </>
     )
 }
